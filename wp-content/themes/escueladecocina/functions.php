@@ -1,6 +1,29 @@
 <?php
 
 /*
+    Funciones que se cargan al activar el tema
+*/
+
+function edc_setup() {
+    // Menu de nagevacion
+    register_nav_menus(array(
+        'menu_principal' => esc_html__('Menu Principal', 'escuelacocina')
+    ));
+}
+
+add_action('after_setup_theme', 'edc_setup');
+
+/* Agrega clase nav-link de bootstrap al menu principal */
+function edc_enlace_class($atts, $item, $args){
+    if($args->theme_location == 'menu_principal'){
+        $atts['class'] = 'nav-link';
+    }
+    return $atts;
+}
+
+add_filter('nav_menu_link_attributes', 'edc_enlace_class', 10, 3);
+
+/*
     Carga los Scripts y CSS del theme
 */
 
@@ -17,6 +40,6 @@ function edc_scripts() {
 }
 
 /* Hooks */
-add_action('wp_enqueue_scripts', 'edc_scripts')
+add_action('wp_enqueue_scripts', 'edc_scripts');
 
 ?>
