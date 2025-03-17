@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">    
     <?php wp_head(); ?>
 </head>
-<body>
+<body <?php body_class(); ?>>
     <header class="header py-5">
         <div class="container">
             <div class="row justify-content-center align-items-center">
