@@ -200,17 +200,9 @@ aside .card-footer a {
     height: 30rem;;
 }
 
-.bg-vino, .bg-comida {
+.imagen-fondo {
     background-size: cover;
     background-position: top center;
-}
-
-.bg-vino {
-    background-image: url(../img/principal1.jpg);    
-}
-
-.bg-comida {
-    background-image: url(../img/principal2.jpg);
 }
 
 .imagen-superior .contenido {

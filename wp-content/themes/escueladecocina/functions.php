@@ -49,4 +49,13 @@ function edc_scripts() {
 /* Hooks */
 add_action('wp_enqueue_scripts', 'edc_scripts');
 
+/* CMB2 */
+add_action('admin_init', function() {
+    if (function_exists('cmb2_bootstrap')) {
+        error_log('CMB2 está cargado correctamente');
+    } else {
+        error_log('CMB2 NO está cargado');
+    }
+});
+
 ?>

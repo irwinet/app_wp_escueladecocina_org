@@ -1,19 +1,26 @@
 <?php get_header(); ?>
 
+<?php while(have_posts()): the_post(); ?>
+<!-- <?php echo get_the_ID(); ?> -->
+
+<!-- <?php 
+    $id_home = get_option('page_on_front');
+    echo $id_home;
+?> -->
+
     <div class="container-fluid imagenes-principales">
         <div class="row imagen-superior imagen">
             <div class="col-md-6 bg-primary">
                 <div class="row justify-content-center align-items-center h-100">
                     <div class="col-sm-8 col-md-6">
                         <div class="contenido text-center text-light py-3">
-                            <h2 class="text-uppercase">20 AÑOS DE EXPERIENCIA</h2>
-                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laborum harum temporibus eaque repudiandae nulla adipisci?</p>
+                            <?php echo get_post_meta(get_the_ID(), 'edc_homepage_text_superior_1', true); ?>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-6 bg-vino">
+            <div class="col-md-6 imagen-fondo" style="background-image:url(<?php echo get_post_meta(get_the_ID(), 'edc_homepage_imagen_superior_1', true); ?>);">
 
             </div>
         </div>
@@ -23,7 +30,7 @@
                 <div class="row justify-content-center align-items-center h-100">
                     <div class="col-sm-8 col-md-6">
                         <div class="contenido text-center py-3">
-                            <h2 class="text-uppercase">SOBRE NOSOTROS</h2>
+                            <?php echo get_post_meta(get_the_ID(), 'edc_homepage_text_superior_2', true); ?>
                             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laborum harum temporibus eaque repudiandae nulla adipisci?</p>
                             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laborum harum temporibus eaque repudiandae nulla adipisci?</p>
                         </div>
@@ -31,8 +38,8 @@
                 </div>
             </div>
 
-            <div class="col-md-6 bg-comida">
-
+            <div class="col-md-6 imagen-fondo" style="background-image:url(<?php echo get_post_meta(get_the_ID(), 'edc_homepage_imagen_superior_2', true); ?>);">
+                
             </div>
         </div>
     </div>
@@ -205,21 +212,27 @@
         </div>
     </section>
 
-    <div class="licenciatura">
+    <!-- <?php printf('<pre>%s</pre>', var_export(get_post_custom(get_the_ID()), true)); ?> -->
+
+    <div class="licenciatura" style="background-image:url(<?php echo get_post_meta(get_the_ID(), 'edc_homepage_imagen_licenciatura', true); ?>);">
         <div class="container">
             <div class="row justify-content-center align-items-center">
                 <div class="col-md-8">
                     <div class="contenido text-light text-center">
-                        <h2>¿Quieres ser Chef?</h2>
-                        <p class="display-4">
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus, quam!
-                        </p>
-
-                        <a href="contacto.html" class="btn btn-primary text-uppercase">Más Información</a>
+                        <p><?php echo get_post_meta(get_the_ID(), 'edc_homepage_text_licenciatura', true); ?></p>
+                        <?php 
+                            $contacto = get_page_by_title('Contacto');
+                            // echo "<pre>";
+                            // var_dump($contacto);                        
+                            // echo "</pre>";                        
+                        ?>
+                        <a href="<?php echo get_permalink($contacto->ID); ?>" class="btn btn-primary text-uppercase">Más Información</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+<?php endwhile; ?>
 
 <?php get_footer(); ?>
