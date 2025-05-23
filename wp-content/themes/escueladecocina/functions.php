@@ -42,23 +42,23 @@ function edc_setup() {
     
     add_theme_support('post-thumbnails');
     
-    // Menu de nagevacion
+    // Menu de nagevacion: Menu Header, Menu Footer, Redes Sociales
     register_nav_menus(array(
         'menu_principal' => esc_html__('Menu Principal', 'escuelacocina')
     ));
 }
 
-add_action('after_setup_theme', 'edc_setup');
+add_action('after_setup_theme', 'edc_setup'); // Para agregar menu de navegacion y otras cosas
 
 /* Agrega clase nav-link de bootstrap al menu principal */
 function edc_enlace_class($atts, $item, $args){
     if($args->theme_location == 'menu_principal'){
-        $atts['class'] = 'nav-link';
+        $atts['class'] = 'nav-link'; // tag: a
     }
     return $atts;
 }
 
-add_filter('nav_menu_link_attributes', 'edc_enlace_class', 10, 3);
+add_filter('nav_menu_link_attributes', 'edc_enlace_class', 10, 3); // Para agregar un filtro a los items del Menu
 
 /*
     Carga los Scripts y CSS del theme
@@ -77,7 +77,7 @@ function edc_scripts() {
 }
 
 /* Hooks */
-add_action('wp_enqueue_scripts', 'edc_scripts');
+add_action('wp_enqueue_scripts', 'edc_scripts'); // Para Css y Js
 
 /* CMB2 */
 add_action('admin_init', function() {

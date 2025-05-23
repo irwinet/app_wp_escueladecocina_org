@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">    
+    <!-- Viene desde functions: edc_scripts -->
     <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
@@ -32,12 +33,12 @@
 
                         <?php
                             $args = array(
-                                'menu_class' => 'nav nav-justified flex-column flex-md-row text-center',
-                                'container_id' => 'nav_principal',
-                                'container_class' => 'collapse navbar-collapse justify-content-center justify-content-lg-end text-center text-uppercase',
+                                'menu_class' => 'nav nav-justified flex-column flex-md-row text-center', // ul
+                                'container_id' => 'nav_principal', // div
+                                'container_class' => 'collapse navbar-collapse justify-content-center justify-content-lg-end text-center text-uppercase', // div
                                 'theme_location' => 'menu_principal'
                             );
-                            wp_nav_menu($args);
+                            wp_nav_menu($args); // Vienes de la funcion: edc_setup
                         ?>
                     </nav>
                 </div> <!-- col-md-8 -->

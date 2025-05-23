@@ -12,7 +12,7 @@
 
                         <?php 
                             $args = array(
-                                'menu_class' => 'nav text-uppercase d-flex flex-column flex-md-row text-center text-md-left',
+                                'menu_class' => 'nav text-uppercase d-flex flex-column flex-md-row text-center text-md-left', // ul
                                 'theme_location' => 'menu_principal'
                             );
                             wp_nav_menu($args);
@@ -25,6 +25,7 @@
             </div>
         </footer>
 
+        <!-- Viene desde functions: edc_scripts -->
         <?php wp_footer(); ?>
     </body>
 </html>
