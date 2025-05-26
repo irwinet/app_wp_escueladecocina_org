@@ -1,4 +1,5 @@
-<?php get_header(); ?>
+<!-- Viene desde el archivo: header.php -->
+<?php get_header(); ?> 
 
 <?php while(have_posts()): the_post(); ?>
 <!-- <?php echo get_the_ID(); ?> -->
@@ -236,3 +237,4 @@
 <?php endwhile; ?>
 
 <?php get_footer(); ?>
+<!-- Viene desde el archivo: footer.php -->

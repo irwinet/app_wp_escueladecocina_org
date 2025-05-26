@@ -40,6 +40,7 @@ function edc_imagen_destacada($id){
 
 function edc_setup() {
     
+    // Imagen destacada
     add_theme_support('post-thumbnails');
     
     // Menu de nagevacion: Menu Header, Menu Footer, Redes Sociales
