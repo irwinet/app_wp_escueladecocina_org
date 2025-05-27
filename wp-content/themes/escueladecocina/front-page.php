@@ -45,33 +45,12 @@
         </div>
     </div>
 
-    <div class="container">
-        <section class="nosotros mt-5">
-            <h2 class="text-center mb-5 separador">
-                ¿Porqué estudiar con nosotros?
-            </h2>
-
-            <div class="row">
-                <div class="col-md-4 text-center informacion">
-                    <img src="img/icono_chef.png" alt="icono chef" class="img-fluid mb-3">
-                    <h3>Chef's Especialistas</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum, reiciendis voluptatibus placeat fugit ea quos eius saepe sapiente iure! Possimus unde modi quod consequatur illum asperiores magnam odit praesentium voluptatum?</p>
-                </div>
-
-                <div class="col-md-4 text-center informacion">
-                    <img src="img/icono_vino.png" alt="icono vino" class="img-fluid mb-3">
-                    <h3>Incluye todo sobre Bebidas</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum, reiciendis voluptatibus placeat fugit ea quos eius saepe sapiente iure! Possimus unde modi quod consequatur illum asperiores magnam odit praesentium voluptatum?</p>
-                </div>
-
-                <div class="col-md-4 text-center informacion">
-                    <img src="img/icono_menu.png" alt="icono menu" class="img-fluid mb-3">
-                    <h3>Siempre Actualizado</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum, reiciendis voluptatibus placeat fugit ea quos eius saepe sapiente iure! Possimus unde modi quod consequatur illum asperiores magnam odit praesentium voluptatum?</p>
-                </div>
-            </div>
-        </section>
-    </div>
+    <?php 
+        $nosotros = new WP_Query('pagename=nosotros');
+        while($nosotros->have_posts()): $nosotros->the_post();
+            get_template_part('template', 'parts/iconos');
+        endwhile; wp_reset_postdata(); // Reiniciar el query
+    ?>
 
     <section class="clases mt-5 py-5">
         <h1 class="separador text-center mb-3">Próximas Clases</h1>
