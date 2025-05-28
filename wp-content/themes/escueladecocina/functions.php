@@ -40,6 +40,9 @@ function edc_imagen_destacada($id){
 
 function edc_setup() {
     
+    // Definir tamaño de imagenes
+    add_image_size('mediano', 510, 340, true);
+
     // Imagen destacada
     add_theme_support('post-thumbnails');
     

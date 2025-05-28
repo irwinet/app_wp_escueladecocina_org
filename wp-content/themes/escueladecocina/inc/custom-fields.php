@@ -1,7 +1,6 @@
 <?php
 
 /* Metaboxes para el Hompage */
-
 add_action( 'cmb2_admin_init', 'edc_campos_homepage' );
 /**
  * Hook in and add a metabox that only appears on the 'About' page
@@ -92,7 +91,6 @@ function edc_campos_homepage() {
 }
 
 /* Metaboxes para Iconos */
-
 add_action( 'cmb2_admin_init', 'edc_seccion_nosotros' );
 /**
  * Hook in and add a metabox to demonstrate repeatable grouped fields
@@ -164,6 +162,39 @@ function edc_seccion_nosotros() {
 		'type' => 'file',
 	) );
 
+}
+
+
+/* Metaboxes para el Blog */
+add_action( 'cmb2_admin_init', 'edc_campos_blog' );
+/**
+ * Hook in and add a metabox that only appears on the 'About' page
+ */
+function edc_campos_blog() {
+	$prefix = 'edc_blog_';
+	$id_blog = get_option('page_for_posts');
+
+	/**
+	 * Metabox to be displayed on a single page ID
+	 */
+	$edc_campos_blog = new_cmb2_box( array(
+		'id'           => $prefix . 'blog',
+		'title'        => esc_html__( 'Campos Blog', 'cmb2' ),
+		'object_types' => array( 'page' ), // Post type
+		'context'      => 'normal',
+		'priority'     => 'high',
+		'show_names'   => true, // Show field names on the left
+		'show_on'      => array(
+			'id' => array( $id_blog ),
+		), // Specific post IDs to display this metabox
+	) );
+
+	$edc_campos_blog->add_field( array(
+		'name' => esc_html__( 'Slogan Blog', 'cmb2' ),
+		'desc' => esc_html__( 'Añada una descripción a la página web', 'cmb2' ),
+		'id'   => $prefix . 'slogn_blog',
+		'type' => 'text',
+	) );
 }
 
 ?>
