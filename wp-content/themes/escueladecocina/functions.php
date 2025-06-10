@@ -1,5 +1,11 @@
 <?php
 
+/* Agrega los Post Types de Instructores y Clases */
+require_once dirname(__FILE__). '/inc/posttypes.php';
+
+/* Queries reutilizables */
+require_once dirname(__FILE__). '/inc/queries.php';
+
 /* Agregar CMB2 */
 require_once dirname(__FILE__) . '/cmb2.php';
 
@@ -42,6 +48,7 @@ function edc_setup() {
     
     // Definir tamaño de imagenes
     add_image_size('mediano', 510, 340, true);
+    add_image_size('cuadrada_mediana', 350, 350, true);
 
     // Imagen destacada
     add_theme_support('post-thumbnails');
@@ -82,6 +89,15 @@ function edc_scripts() {
 
 /* Hooks */
 add_action('wp_enqueue_scripts', 'edc_scripts'); // Para Css y Js
+
+/* Agrega un mensaje personalizado a la pagina en el admin */
+add_filter('display_post_states', 'edc_cambiar_estado', 10, 2);
+function edc_cambiar_estado($states, $post){
+    if(('page' === get_post_type($post->ID)) && ('page-clases.php' == get_page_template_slug($post->ID))){
+        $states[] = _('Página de Clases <a href="edit.php?post_type=clases_cocina">Administrar Clases</a>');
+    }
+    return $states;
+}
 
 /* CMB2 */
 add_action('admin_init', function() {

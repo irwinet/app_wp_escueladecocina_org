@@ -8,7 +8,7 @@
 
 <main class="container">
     <div class="row justify-content-center">
-        <div class="py-3 px-5 contenido-pagina bg-light <?php echo $html[1] ? 'col-md-8 destacada' : 'col-md-12 nodestacada'; ?>">
+        <div class="py-3 px-5 contenedor-principal bg-light <?php echo $html[1] ? 'col-md-8 destacada' : 'col-md-12 nodestacada'; ?>">
             <h1 class="text-center my-5 separador"><?php the_title(); ?></h1>
             <?php the_content(); ?>
         </div>

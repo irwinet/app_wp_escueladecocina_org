@@ -197,4 +197,131 @@ function edc_campos_blog() {
 	) );
 }
 
+/* Añade campos al post type de Clases */
+/* Metaboxes para Iconos */
+add_action( 'cmb2_admin_init', 'edc_campos_clases' );
+/**
+ * Hook in and add a metabox to demonstrate repeatable grouped fields
+ */
+function edc_campos_clases() {
+	$prefix = 'edc_cursos_';
+
+	/**
+	 * Repeatable Field Groups
+	 */
+	$edc_campos_cursos = new_cmb2_box( array(
+		'id'           => $prefix . 'metabox',
+		'title'        => esc_html__( 'Información de Clases y Cursos', 'cmb2' ),
+		'object_types' => array( 'clases_cocina' ),
+		'context'	   => 'normal',
+		'priority'	   => 'high',
+		'show_names'   => 'true'		
+	) );
+
+	$edc_campos_cursos->add_field( array(
+		'name' => esc_html__( 'Subtitulo del Curso', 'cmb2' ),
+		'desc' => esc_html__( 'Añada un subtitulo para el curso', 'cmb2' ),
+		'id'   => $prefix . 'subtitulo',
+		'type' => 'text',
+	) );
+
+	// Horas y Dias
+	$edc_campos_cursos->add_field( array(
+		'name'     => esc_html__( 'Información sobre la fecha y Horarios del curso', 'cmb2' ),
+		'desc'     => esc_html__( 'Añada información relacionada a fechas, días y horas para el curso', 'cmb2' ),
+		'id'       => $prefix . 'info',
+		'type'     => 'title',
+		'on_front' => false,
+	) );
+
+	$edc_campos_cursos->add_field( array(
+		'name' => esc_html__( 'Indicaciones de los días', 'cmb2' ),
+		'desc' => esc_html__( 'Añada las indicaciones de los días ej: Todos los sábados', 'cmb2' ),
+		'id'   => $prefix . 'indicaciones',
+		'type' => 'text',
+	) );
+
+	$edc_campos_cursos->add_field( array(
+		'name' => esc_html__( 'Fecha de Inicio de Curso', 'cmb2' ),
+		'desc' => esc_html__( 'Añada la fecha de Inicio de Curso', 'cmb2' ),
+		'id'   => $prefix . 'fecha_inicio_curso',
+		'type' => 'text_date',
+		'date_format' => 'd-m-Y',
+		'column' => true
+	) );
+
+	$edc_campos_cursos->add_field( array(
+		'name' => esc_html__( 'Fecha de Fin de Curso', 'cmb2' ),
+		'desc' => esc_html__( 'Añada la fecha de Fin de Curso', 'cmb2' ),
+		'id'   => $prefix . 'fecha_fin_curso',
+		'type' => 'text_date',
+		'date_format' => 'd-m-Y',
+		'column' => true
+	) );
+
+	$edc_campos_cursos->add_field( array(
+		'name' => esc_html__( 'Hora de Inicio de Clase', 'cmb2' ),
+		'desc' => esc_html__( 'Añada la hora', 'cmb2' ),
+		'id'   => $prefix . 'hora_inicio_clase',
+		'type' => 'text_time',
+		'column' => true
+		// 'time_format' => 'H:i', // Set to 24hr format
+	) );
+
+	$edc_campos_cursos->add_field( array(
+		'name' => esc_html__( 'Hora de Fin de Clase', 'cmb2' ),
+		'desc' => esc_html__( 'Añada la hora', 'cmb2' ),
+		'id'   => $prefix . 'hora_fin_clase',
+		'type' => 'text_time',
+		// 'time_format' => 'H:i', // Set to 24hr format
+	) );
+	
+	// Añada información sobre cupos, precio, etc
+	$edc_campos_cursos->add_field( array(
+		'name'     => esc_html__( 'Información Extra del curso', 'cmb2' ),
+		'desc'     => esc_html__( 'Añada cupo, precio, instructor en esta sección', 'cmb2' ),
+		'id'       => $prefix . 'bloque',
+		'type'     => 'title',
+		'on_front' => false,
+	) );
+
+	$edc_campos_cursos->add_field( array(
+		'name' => esc_html__( 'Precio del Curso', 'cmb2' ),
+		'desc' => esc_html__( 'Añada el costo del curso', 'cmb2' ),
+		'id'   => $prefix . 'costo',
+		'type' => 'text_money',
+		'column' => true
+		// 'before_field' => '£', // override '$' symbol if needed
+		// 'repeatable' => true,
+	) );
+
+	$edc_campos_cursos->add_field( array(
+		'name' => esc_html__( 'Cupo', 'cmb2' ),
+		'desc' => esc_html__( 'Cupo para el curso', 'cmb2' ),
+		'id'   => $prefix . 'cupo',
+		'type' => 'text',
+	) );
+
+	$edc_campos_cursos->add_field( array(
+		'name' => esc_html__( 'Que Incluye el Curso', 'cmb2' ),
+		'desc' => esc_html__( 'Añada lo que incluye el curso (1 por línea)', 'cmb2' ),
+		'id'   => $prefix . 'incluye',
+		'type' => 'text',
+		'repeatable' => true
+	) );
+
+	$edc_campos_cursos->add_field( array(
+		'name' => esc_html__( 'Chef Instructor del Curso', 'cmb2' ),
+		'desc' => esc_html__( 'Seleccione el chef que impartirá el curso', 'cmb2' ),
+		'id'   => $prefix . 'chef',
+		'limit' => 10,
+		'type' => 'post_search_ajax',
+		'query_args'	=> array(
+			'post_type'			=> array( 'chefs' ),
+			'post_status'		=> array( 'publish' ),
+			'posts_per_page'	=> -1
+		)
+	) );
+}
+
 ?>
