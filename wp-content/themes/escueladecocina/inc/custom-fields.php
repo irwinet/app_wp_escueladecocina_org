@@ -324,4 +324,38 @@ function edc_campos_clases() {
 	) );
 }
 
+/* Añade campos al post type de Clases */
+/* Metaboxes para Iconos */
+add_action( 'cmb2_admin_init', 'edc_campos_galeria' );
+/**
+ * Hook in and add a metabox to demonstrate repeatable grouped fields
+ */
+function edc_campos_galeria() {
+	$prefix = 'edc_galeria_';
+
+	/**
+	 * Repeatable Field Groups
+	 */
+	$edc_galeria = new_cmb2_box( array(
+		'id'           => $prefix . 'metabox',
+		'title'        => esc_html__( 'Galería de Imágenes', 'cmb2' ),
+		'object_types' => array( 'page' ),
+		'context'	   => 'normal',
+		'priority'	   => 'high',
+		'show_names'   => 'true',
+		'show_on'	   => array(
+			'key'   => 'page-template',
+			'value' => 'page-galeria.php'
+		),		
+	) );
+
+	$edc_galeria->add_field( array(
+		'name'         => esc_html__( 'Imágenes', 'cmb2' ),
+		'desc'         => esc_html__( 'Cargue las imágenes de la galería aquí', 'cmb2' ),
+		'id'           => $prefix . 'imagenes',
+		'type'         => 'file_list',
+		'preview_size' => array( 100, 100 ), // Default: array( 50, 50 )
+	) );
+}
+
 ?>
