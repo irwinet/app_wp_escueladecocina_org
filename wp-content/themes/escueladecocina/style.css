@@ -23,6 +23,12 @@ body {
     color: #303030;
 }
 
+/* Plugin Contact Form 7 */
+.wpcf7-form-control-wrap, .form-group label
+{
+    width: 100%;
+}
+
 p {
     font-weight: 300;
     line-height: 2rem;
