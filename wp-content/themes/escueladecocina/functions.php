@@ -58,6 +58,7 @@ function edc_setup() {
 
     // Imagen destacada
     add_theme_support('post-thumbnails');
+    add_theme_support('title-tag'); // Para agregar el titulo de la pagina en el head
     // add_theme_support('custom-logo');
     
     // Menu de nagevacion: Menu Header, Menu Footer, Redes Sociales
