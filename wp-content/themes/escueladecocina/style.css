@@ -35,6 +35,10 @@ p {
     font-size: 1rem;
 }
 
+.entrada .btn-primary {
+    color: white !important;
+}
+
 .bg-primary, .list-group-item-primary, .btn-primary {
     background-color: #f46669 !important;
 }
@@ -84,8 +88,8 @@ p {
     background-position: center center;
 }
 
-.inverso::after {
-    background-image: url(img/separador-inverso.png);
+.separador.inverso::after {
+    background-image: url(img/separador-inverso.png) !important;
 }
 
 /** Imagen de Fondo **/

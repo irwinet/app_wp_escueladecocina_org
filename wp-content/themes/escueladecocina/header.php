@@ -13,7 +13,17 @@
             <div class="row justify-content-center align-items-center">
                 <div class="col-md-4 col-8 mb-4 mb-md-0">
                     <a href="<?php echo esc_url(home_url('/')); ?>">
-                        <img src="<?php echo get_template_directory_uri(); ?>/img/logo.svg" class="img-fluid" alt="">
+                        <?php 
+                            $opciones = get_option('edc_theme_options'); 
+                            // echo "<pre>";
+                            // var_dump($opciones); // Para ver las opciones del theme
+                            // echo "</pre>";
+                            if(isset($opciones['logotipo'])): ?>
+                                <img src="<?php echo $opciones['logotipo']; ?>" class="img-fluid" alt="">
+                            <?php else: ?>
+                                <img src="<?php echo get_template_directory_uri(); ?>/img/logo.svg" class="img-fluid" alt="">
+                            <?php endif;
+                        ?>                        
                     </a>
                 </div>
                 <div class="col-md-8">

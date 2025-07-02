@@ -57,7 +57,19 @@
 
         <div class="container">
             <div class="row">
-                <?php edc_query_cursos(3); ?>
+                <?php 
+                    $opciones = get_option('edc_theme_options');
+                    // echo "<pre>";
+                    // var_dump($opciones); // Para ver las opciones del theme
+                    // echo "</pre>";
+                    if(isset($opciones['numero_clases'])){
+                        $clases =  (int)$opciones['numero_clases'];
+                    } else {
+                        $clases = 3; // Valor por defecto si no se ha configurado
+                    }
+                    
+                    edc_query_cursos($clases); 
+                ?>
             </div>
             <div class="row justify-content-end">
                 <div class="col-sm-5 col-md-3">

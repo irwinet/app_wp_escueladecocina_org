@@ -15,6 +15,9 @@ require_once dirname(__FILE__) . '/cmb2.php';
 /* Carga campos personalizados */
 require_once dirname(__FILE__) . '/inc/custom-fields.php';
 
+/* Opciones del theme */
+require_once dirname(__FILE__) . '/inc/opciones.php';
+
 /* Imagenes Destacadas Para Pagina */
 add_action('init', 'edc_imagen_destacada');
 function edc_imagen_destacada($id){
@@ -55,6 +58,7 @@ function edc_setup() {
 
     // Imagen destacada
     add_theme_support('post-thumbnails');
+    // add_theme_support('custom-logo');
     
     // Menu de nagevacion: Menu Header, Menu Footer, Redes Sociales
     register_nav_menus(array(
