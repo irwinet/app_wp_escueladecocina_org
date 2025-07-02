@@ -26,7 +26,7 @@
                         </div>
                         <div class="col-md-8">
                             <div class="contenido-entrada pt-4 pt-md-0">
-                                <a href="entrada.html">
+                                <a href="<?php the_permalink(); ?>">
                                     <h3><?php the_title(); ?></h3>
                                     <?php 
                                         //echo get_the_title(); 

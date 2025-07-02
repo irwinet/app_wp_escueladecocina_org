@@ -1,5 +1,8 @@
 <?php
 
+/* Crea un Widgets con los proximos cursos */
+require_once dirname(__FILE__). '/inc/widgets.php';
+
 /* Agrega los Post Types de Instructores y Clases */
 require_once dirname(__FILE__). '/inc/posttypes.php';
 
@@ -107,5 +110,18 @@ add_action('admin_init', function() {
         error_log('CMB2 NO está cargado');
     }
 });
+
+/* Soporte a widgets */
+add_action('widgets_init', 'edc_widgets_sidebar');
+function edc_widgets_sidebar() {
+    register_sidebar(array(
+        'name' => 'Widget Lateral',
+        'id'   => 'sidebar_widget',
+        'before_widget' => '<div class="widget">',
+        'after_widget' => '</div>',
+        'before_title' => '<h2 class="text-center text-light separador inverso">',
+        'after_title' => '</h2>'
+    ));
+}
 
 ?>
